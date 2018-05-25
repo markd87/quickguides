@@ -13,16 +13,17 @@ cron allows to schedule tasks on linux to be executed periodically at given time
  - `0` is Sunday
 
 ### Example cron file
+```
 MAILTO="" \
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin \
 00 04 * * * (cd ~/[script folder]/; ./[script_file.sh]) >/tmp/reports.log 2>&1
+```
 
  - The script in [script_File.sh] will be executed everyday at 4AM.
- - Here, MAILTO="", prevents the error from cron trying to email the output from
+ - Here, `MAILTO=""`, prevents the error from cron trying to email the output from
 the script.
  - PATH specifies where to look for the programs to execute different commands in the script.
- - for two commands we put them in parentheses and separate with ; (or &&)
+ - for two commands we put them in parentheses and separate with `;` (or `&&`)
  - `>/tmp/reports.log` redirects the output from the script to this file.
  - `2>&1` means that the second file descriptor of the process (stderr) is redirected to
- `&1`, which is the same location as the first file descriptor (stdout), which
- is the log file.
+ `&1`, which is the same location as the first file descriptor (stdout), which is the log file.
